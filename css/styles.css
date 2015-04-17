@@ -1,0 +1,25 @@
+/*Map styles*/
+html {min-height:100%;}
+
+#fullBody {min-height:100%; background-color:#ccc;}
+
+#map-canvas{height: 950px;}
+
+/*List Styles*/
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: #2DB82D;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  margin: 10px 0px;
+}
+
+li:hover {
+  background-color: #348F34;
+}
