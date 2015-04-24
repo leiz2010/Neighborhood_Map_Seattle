@@ -1,6 +1,6 @@
 // Get data from Foursqure as JSON format
-function requestData(location, keyword){
-    var request = requestUrlBuilder(location, keyword);
+function requestData(location){
+    var request = requestUrlBuilder(location);
     $.getJSON(request, function(data){
         var places = data.response.venues;
         var temp = [];
@@ -14,25 +14,24 @@ function requestData(location, keyword){
         }
         placeViewModel.filter(temp);
 
-    }).error(function(e){
+    }).error(function(){
         // Display error message if request fails
         alert('Data could not be loaded');
-    })
+    });
 }
 
 // Constructs requestUrl for Foursquere api call
-function requestUrlBuilder(location, keyword){
+function requestUrlBuilder(location){
 
     var clientId = 'NO0SWAUG0AGK3FCJEWS5G4YBCFRZJSL0OD3UXPLZA5UBOAGK';
     var clientSecret = 'MBPDJM4XQHD4SFBGICJ4QVO2K54LJEMSY1T1D5GIHEVMXSF2';
     var version = getVersion();
-    var requestUrl = 'https://api.foursquare.com/v2/venues/search?'
-                        +'ll='+location[0]+','+location[1]
-                        +'&client_id='+clientId
-                        +'&client_secret='+clientSecret
-                        +'&v='+version
-                        +'&radius=300'
-                        //+'&query='+keyword
+    var requestUrl = 'https://api.foursquare.com/v2/venues/search?'+
+                        'll='+location[0]+','+location[1]+
+                        '&client_id='+clientId+
+                        '&client_secret='+clientSecret+
+                        '&v='+version+
+                        '&radius=300';
     return requestUrl;
 }
 
@@ -59,8 +58,8 @@ var PlaceViewModel = function(){
     // Get data from the server
     this.getData = function(){
         // request date at Seattle area
-        requestData([47.620505, -122.349267], '');
-    }
+        requestData([47.620505, -122.349267]);
+    };
 
     // Filter the results
     this.filter = function(data){
@@ -76,12 +75,12 @@ var PlaceViewModel = function(){
         // Bind results to the data observableArray
         self.data(results);
         setMarkers(results);
-    }
+    };
 
     // showInfo window when data observerableArray is clicked
     this.showInfo = function(place){
-        lat = place.location.lat;
-        lng = place.location.lng;
+        var lat = place.location.lat;
+        var lng = place.location.lng;
 
         // Compare marker and place's lat, lng if match show info
         for(var i=0; i<markers.length; i++){
@@ -91,7 +90,7 @@ var PlaceViewModel = function(){
                 google.maps.event.trigger(markers[i], "click");
             }
         }
-    }
+    };
 
     // Helper function for getting the user input
     function getInput(){

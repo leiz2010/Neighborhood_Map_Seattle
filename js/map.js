@@ -10,7 +10,7 @@ function initialize() {
         center: seattle,
         zoom: 18
     });
-    requestData([47.620505, -122.349267], '');
+    requestData([47.620505, -122.349267]);
     infowindow = new google.maps.InfoWindow();
 }
 
@@ -20,8 +20,8 @@ function setMarkers(places) {
         markers[i].setMap(null);
     }
 
-    for (var i = 0; i < places.length; i++) {
-        createMarker(places[i]);
+    for (var j= 0; j < places.length; j++) {
+        createMarker(places[j]);
     }
 }
 
@@ -51,17 +51,26 @@ function infoContentBuilder(place){
     var street = place.location.formattedAddress[0];
     var city = place.location.formattedAddress[1];
     var country = place.location.formattedAddress[2];
-    var url = '';
-    if(place.url){
-        url = place.url;
-    };
+    // Check undefined for country
+    if (country === undefined){
+        country = '';
+    }
+    var contentURL = '';
+    // Check undefined for url
+    if (place.url === undefined){
+        contentURL = '<p hidden>URL not available</p>';
+    } else {
+        contentURL = '<a href='+place.url+'>'+place.url+'</a>';
+    }
+
+
     var style = 'style="line-height: 5%;"';
 
-    var contentString = '<h5>'+name+'</h5>'
-                        +'<p'+style+'>'+street+'</p>'
-                        +'<p'+style+'>'+city+'</p>'
-                        +'<p'+style+'>'+country+'</p>'
-                        +'<a href='+url+'>'+url+'</a>'
+    var contentString = '<h5>'+name+'</h5>'+
+                        '<p'+style+'>'+street+'</p>'+
+                        '<p'+style+'>'+city+'</p>'+
+                        '<p'+style+'>'+country+'</p>'+
+                        contentURL;
     return contentString;
 }
 

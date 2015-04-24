@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang=en>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewprot" content="width=device-width, initial-scale=1.0">
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="js/lib/knockout-3.3.0.js"></script>
-    <script type="text/javascript" src="js/lib/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script type="text/javascript" src="js/app.js" defer="defer"></script>
-    <script type="text/javascript" src="js/map.js"></script>
-    <title>Neighbor Map</title>
-</head>
-<body id="fullBody">
-    <div class="container-fluid">
-        <hr id="line-break">
-        <div class="row">
-            <div class="col-lg-10 col-md-10">
-                <input class="form-control" id="searchText" type="search" placeholder="Search a place by name" size="50">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewprot" content="width=device-width, initial-scale=1.0">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="js/lib/knockout-3.3.0.js"></script>
+        <script src="js/lib/jquery-1.11.2.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+        <script src="js/app.js" defer="defer"></script>
+        <script src="js/map.js"></script>
+        <title>Neighbor Map</title>
+    </head>
+    <body id="fullBody">
+        <div class="container-fluid">
+            <hr id="line-break">
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <input class="form-control" id="searchText" type="search" placeholder="Search a place by name" size="50">
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <input class="btn btn-primary btn-block" id="submit" type="submit" data-bind="click: getData" value="Search">
+                </div>
             </div>
-            <div class="col-lg-2 col-md-2">
-                <input class="btn btn-primary btn-block" id="submit" type="submit" data-bind="click: getData" value="Search">
+            <hr id="line-break">
+            <div class="row">
+                <div class="col-lg-10 col-md-10">
+                    <div id="map-canvas"></div>
+                </div>
+                <div class="col-lg-2 col-md-2">
+                    <ul id="placesList" data-bind="foreach: data">
+                        <li data-bind="text: name, click: $parent.showInfo"></li>
+                    </ul>
+                </div>
             </div>
+            <hr id="line-break">
         </div>
-        <hr id="line-break">
-        <div class="row">
-            <div class="col-lg-10 col-md-10">
-                <div id="map-canvas"></div>
-            </div>
-            <div class="col-lg-2 col-md-2">
-                <ul id="placesList" data-bind="foreach: data">
-                    <li data-bind="text: name, click: $parent.showInfo"></li>
-                </ul>
-            </div>
-        </div>
-        <hr id="line-break">
-    </div>
-</body>
+    </body>
 </html>
