@@ -26,9 +26,9 @@ li:hover {
 
 @media screen and (max-width: 1300px) {
     #searchText, #submit {
-        height: 80px;
-        font-size: 40px;
+        height: 40px;
+        font-size: 20px;
     }
 
-    #map-canvas{height: 650px;}
+    #map-canvas{height: 350px;}
 }
