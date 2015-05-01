@@ -84,8 +84,8 @@ var PlaceViewModel = function(){
 
         // Compare marker and place's lat, lng if match show info
         for(var i=0; i<markers.length; i++){
-            var latDiff = Math.abs(lat - markers[i].position.k);
-            var lngDiff = Math.abs(lng - markers[i].position.D);
+            var latDiff = Math.abs(lat - markers[i].position.A);
+            var lngDiff = Math.abs(lng - markers[i].position.F);
             if (latDiff < 0.00001 && lngDiff < 0.00001){
                 google.maps.event.trigger(markers[i], "click");
             }

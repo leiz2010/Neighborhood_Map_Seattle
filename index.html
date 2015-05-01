@@ -16,19 +16,19 @@
         <div class="container-fluid">
             <hr id="line-break">
             <div class="row">
-                <div class="col-lg-10 col-md-10">
+                <div class="col-lg-10 col-md-10 col-sm-10">
                     <input class="form-control" id="searchText" type="search" placeholder="Search a place by name" size="50">
                 </div>
-                <div class="col-lg-2 col-md-2">
+                <div class="col-lg-2 col-md-2 col-sm-2">
                     <input class="btn btn-primary btn-block" id="submit" type="submit" data-bind="click: getData" value="Search">
                 </div>
             </div>
             <hr id="line-break">
             <div class="row">
-                <div class="col-lg-10 col-md-10">
+                <div class="col-lg-10 col-md-10 col=sm-10">
                     <div id="map-canvas"></div>
                 </div>
-                <div class="col-lg-2 col-md-2">
+                <div class="col-lg-2 col-md-2 col=sm-2">
                     <ul id="placesList" data-bind="foreach: data">
                         <li data-bind="text: name, click: $parent.showInfo"></li>
                     </ul>

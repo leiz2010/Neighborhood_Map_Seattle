@@ -24,7 +24,7 @@ li:hover {
   background-color: #348F34;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1000px) {
     #searchText, #submit {
         height: 40px;
         font-size: 20px;
